@@ -32,6 +32,17 @@ function init() {
   player2DOM.classList.remove('player--active');
 }
 
+function switchPlayer() {
+  // CURRENT SCORE TO 0
+  currentScore = 0;
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+
+  // SWITCH PLAYER
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player1DOM.classList.toggle('player--active');
+  player2DOM.classList.toggle('player--active');
+}
+
 // INITIALISING THE GAME
 init();
 
@@ -50,14 +61,8 @@ btnRollDOM.addEventListener('click', () => {
       currentScore += randomNumber;
       document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
-      // CURRENT SCORE TO 0
-      currentScore = 0;
-      document.getElementById(`current--${activePlayer}`).textContent = 0;
-
       // SWITCH PLAYER
-      activePlayer = activePlayer === 0 ? 1 : 0;
-      player1DOM.classList.toggle('player--active');
-      player2DOM.classList.toggle('player--active');
+      switchPlayer();
     }
   }
 });
@@ -74,13 +79,8 @@ btnHoldDOM.addEventListener('click', () => {
       playing = false;
       diceDOM.classList.add('hidden');
     }
-
     // SWITCH PLAYER
-    currentScore = 0;
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    player1DOM.classList.toggle('player--active');
-    player2DOM.classList.toggle('player--active');
+    switchPlayer();
   }
 });
 
