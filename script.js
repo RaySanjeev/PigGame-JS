@@ -74,7 +74,7 @@ btnHoldDOM.addEventListener('click', () => {
     document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
 
     // CHECK FOR 100
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
       playing = false;
       diceDOM.classList.add('hidden');
